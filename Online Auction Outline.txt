@@ -1,0 +1,40 @@
+Outline - 
+1) Login Page
+2) Registration Page
+3) Home Page where all products are shown which are available for bidding
+4) Procduct View Page
+5) Bidding page where all bidders will bid on product here product image with title and price will be available and when anyone bid, bid amount with bidder name will be added like small cards and bid with highest amount hwill be of different color.
+6) Add bid page a form user have to enter product title, price, desciption, image, bid start and bid end time
+7) My account page for every user where user can manage his info general info and how many bids he participated how many bids user listed and his earnings if any.
+8) Admin Page where all bids are listed and admin have control to add delete any bid more controls can also be added for admin like allow seller/bidder.
+9) Bid delete no page required only a link to php code where product with specified id will be deleted.
+10) Bid update page where user can update his bid like product details price and bid times but user can't edit bid while bid is live.
+
+Backend - 
+1) For login page we have to check if user with given email is available in our db and if user email doesn't exists throw error if user exists then check if password entered is matches with user entry. If user matches store its id and email in session and redirect user to home page.
+2) For registration we have to take name email password as a input and make a user entry in user entity table and store email and id in session and redirect to home page.
+3) For home page where all available and upcoming bids will be shown we have to select all bids from bids table and display them in a grid.
+4) Same grid would be shown for admin page, admin will also have option for add,delete a bid for adding a bid admin can specify a seller name but this is optional if admin specify seller name then earnings would from that bid will be shown in seller account otherwise earning will be shown in admin.
+5) For bidding page we have to select the bid with specified ID list its all details and hisghest bid after closing of bid will be saved in database as a earning for that particular seller and as spending in bidder account.
+6) For add bid page we have to take all inputs and store them in db. Title price image description bid start/stop time all will be required if any missing throw error.
+7) For my account page we have to get all details of user from user entity table with specfied user id which we can get from session. Both user and bids table will be connected so we can get all bids of specified user id from bids table.
+8) Bid update page we have set values in inputs with hidden input type of id and after submitting form the inputted id bid will be updated.
+
+Database - 
+ 1) User table
+      - user id int field as PRIMARY KEY AUTO INCREMENT AND NULLABLE FALSE
+      - user name varchar field nullable false
+      - user email varchar feild nullable false
+      - user password varchar nullable false
+      - user earning varchar nullable true
+      - user spending varchar nullable true
+
+2) Bids table
+     - bid id int field as PRIMARY KEY AUTO INCREMENT AND NULLABLE FALSE
+     - bid title varchar nullable false
+     - bid base price int nullable false
+     - bid final price int nullable true
+     - bid description text nullable false
+     - bid image blob fields nullable false
+     - user id FOREIGN KEY table User Table column User Id
+  
